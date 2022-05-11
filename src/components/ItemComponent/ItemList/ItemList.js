@@ -15,6 +15,7 @@ const ItemList = ({ data }) => {
           )
         }
       </Row>
+      
     </>:
     <p className="fs-3">Sin resultados.</p>
 
