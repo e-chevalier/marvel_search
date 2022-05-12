@@ -11,30 +11,20 @@ const ItemListContainer = () => {
 
     const [currentPage, SetCurrentPage] = useState(1)
     const PAGINATION_SIZE = 10
-
     const [searchParams, setSearchParams] = useSearchParams();
-
     const params = Object.fromEntries([...searchParams]);
-
-    let { character, page } = params
+    let { character } = params
     let queryParamToSearch = ''
 
     queryParamToSearch = character ? character : Object.keys(params)[0]
 
-    if (page) {
-        console.log("PAGE: ", page)
-        //SetCurrentPage(page)
-    }
-
     useEffect(() => {
-        // const currentParams = Object.fromEntries([...searchParams]); // LOG
-        // console.log('useEffect:', currentParams); // LOG
-
-        console.log(queryParamToSearch)
         if (queryParamToSearch) { // Search not random
             setSearchParams({ character: queryParamToSearch, page: currentPage })
         }
-    }, [searchParams, currentPage]);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [searchParams, currentPage])
 
     const [data, loading] = useGetData(queryParamToSearch)
 

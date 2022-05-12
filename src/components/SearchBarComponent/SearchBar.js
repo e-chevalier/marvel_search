@@ -14,7 +14,7 @@ const SearchBar = ({onSearch}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("VALUE handleSubmite: " + value)
+
     if (value !== '') {
       onSearch(1)
       navigate(`/characters?${value}`)
@@ -45,7 +45,6 @@ const SearchBar = ({onSearch}) => {
               />
               <p className="border_star px-1"><i className="bi bi-star color_purple p-0"></i></p>
             </Form>
-
 
           </Container>
         </Navbar>

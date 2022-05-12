@@ -3,8 +3,6 @@ import Row from 'react-bootstrap/Row'
 
 const ItemList = ({ data }) => {
 
-  //console.log("Productos length: " + data.length)
-
   return (
     data.length > 0?
     <>     

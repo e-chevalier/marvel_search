@@ -9,13 +9,11 @@ const useGetData = (id) => {
     useEffect(() => {
         getFetch(id)
             .then(res => {
-                console.log("Hace el fecth para id:" + id)
                 setData(res)
             })
             .catch(err => console.log(err))
             .finally(() => {
                 setLoading(false);
-                console.log('GetData Finalizada para id:' + id);
             });
 
         return () => {
