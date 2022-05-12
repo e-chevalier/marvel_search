@@ -6,6 +6,7 @@ import Loading from '../../LoadingComponent/Loading'
 import { useSearchParams } from 'react-router-dom'
 import PaginationPages from '../../PaginationPagesComponent/PaginationPages/PaginationPages'
 
+
 const ItemListContainer = () => {
 
     const [currentPage, SetCurrentPage] = useState(1)
@@ -18,15 +19,16 @@ const ItemListContainer = () => {
     const queryParamToSearch = Object.keys(params)[0]
     console.log(queryParamToSearch)
 
-    // useEffect(() => {
-    // //     // read the params on component load and when any changes occur 
-    // //     const currentParams = Object.fromEntries([...searchParams]);
-    // //     // get new values on change
-    // //     console.log('useEffect:', currentParams);
-    // //     // update the search params programmatically
-    // //     //setSearchParams({ sort: 'name', order: 'ascending' });
-    //     setSearchParams({ character: queryParamToSearch, page: currentPage })    
-    // }, [searchParams]);
+
+    useEffect(() => {
+    //     // read the params on component load and when any changes occur 
+        const currentParams = Object.fromEntries([...searchParams]);
+    //     // get new values on change
+        console.log('useEffect:', currentParams);
+    //     // update the search params programmatically
+    //     //setSearchParams({ sort: 'name', order: 'ascending' });
+        //setSearchParams({ character: queryParamToSearch, page: currentPage })    
+    }, [searchParams]);
 
     const [data, loading] = useGetData(queryParamToSearch)
 

@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import getFetch from "../services/GetData/getFetch.js";
 
-const useGetData = (id = 0) => {
+const useGetData = (id) => {
 
-    console.log("id "+ id)
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getFetch(id)
             .then(res => {
+                console.log("Hace el fecth para id:" + id)
                 setData(res)
             })
             .catch(err => console.log(err))
             .finally(() => {
                 setLoading(false);
-                console.log('GetData Finalizada');
+                console.log('GetData Finalizada para id:' + id);
             });
 
         return () => {
