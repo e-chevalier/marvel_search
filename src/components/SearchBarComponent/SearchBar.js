@@ -7,7 +7,7 @@ import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button';
 import { useState } from "react";
 
-const NavigationBar = () => {
+const SearchBar = ({onSearch}) => {
 
   const [value, setValue] = useState('')
   let navigate = useNavigate()
@@ -16,6 +16,7 @@ const NavigationBar = () => {
     event.preventDefault();
     console.log("VALUE handleSubmite: " + value)
     if (value !== '') {
+      onSearch(1)
       navigate(`/characters?${value}`)
     }
   }
@@ -53,4 +54,4 @@ const NavigationBar = () => {
   );
 };
 
-export default NavigationBar;
+export default SearchBar;

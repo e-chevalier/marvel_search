@@ -6,6 +6,7 @@ const getRandomCharacter = () => {
         result = Math.random().toString(36).substring(2, 3);
     } while (!isNaN(Number(result)))
 
+    console.log("getRandomCharacter: " + result);
     return result
 
 }
