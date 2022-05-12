@@ -7,29 +7,34 @@ import { useSearchParams } from 'react-router-dom'
 import PaginationPages from '../../PaginationPagesComponent/PaginationPages/PaginationPages'
 import SearchBar from "../../SearchBarComponent/SearchBar";
 
-
 const ItemListContainer = () => {
 
     const [currentPage, SetCurrentPage] = useState(1)
     const PAGINATION_SIZE = 10
 
     const [searchParams, setSearchParams] = useSearchParams();
-    
-    const params = Object.fromEntries([...searchParams]);
-    
-    const queryParamToSearch = Object.keys(params)[0]
-    console.log(queryParamToSearch)
 
+    const params = Object.fromEntries([...searchParams]);
+
+    let { character, page } = params
+    let queryParamToSearch = ''
+
+    queryParamToSearch = character ? character : Object.keys(params)[0]
+
+    if (page) {
+        console.log("PAGE: ", page)
+        //SetCurrentPage(page)
+    }
 
     useEffect(() => {
-        //     // read the params on component load and when any changes occur 
-        const currentParams = Object.fromEntries([...searchParams]);
-        //     // get new values on change
-        console.log('useEffect:', currentParams);
-        //     // update the search params programmatically
-        //     //setSearchParams({ sort: 'name', order: 'ascending' });
-        //setSearchParams({ character: queryParamToSearch, page: currentPage })    
-    }, [searchParams]);
+        // const currentParams = Object.fromEntries([...searchParams]); // LOG
+        // console.log('useEffect:', currentParams); // LOG
+
+        console.log(queryParamToSearch)
+        if (queryParamToSearch) { // Search not random
+            setSearchParams({ character: queryParamToSearch, page: currentPage })
+        }
+    }, [searchParams, currentPage]);
 
     const [data, loading] = useGetData(queryParamToSearch)
 
@@ -40,7 +45,9 @@ const ItemListContainer = () => {
             <>
                 <SearchBar onSearch={(page) => { SetCurrentPage(page) }} />
                 <Container id="cards" className="py-5 my-5">
-                    <ItemList data={data.slice((currentPage - 1) * PAGINATION_SIZE, currentPage * PAGINATION_SIZE)} />
+                    <ItemList
+                        data={data.slice((currentPage - 1) * PAGINATION_SIZE, currentPage * PAGINATION_SIZE)}
+                    />
                     <PaginationPages
                         currentPage={currentPage}
                         total={Math.ceil(data.length / PAGINATION_SIZE)}
