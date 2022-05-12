@@ -7,7 +7,7 @@ const Item = ({ prod }) => {
     return (
         <Col className="d-flex justify-content-center">
             <Card className="position-relative text-decoration-none text-body bg-light text-white card_maxSize">
-                <Card.Img variant="top" src={prod.thumbnail.path+'/standard_fantastic.'+ prod.thumbnail.extension} />
+                <Card.Img variant="top" src={prod.thumbnail.path+'/standard_fantastic.'+ prod.thumbnail.extension} loading="lazy"/>
                 <Card.ImgOverlay className="d-flex align-items-end p-0 text-start">
                     <div className="fs-1 star_shadow position-absolute top-0 end-0 pe-3">
                         <img src="/Star.svg" className="star_size" alt="Star"></img>
