@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 const Item = ({ prod }) => {
 
     return (
-        <Col>
+        <Col className="d-flex justify-content-center">
             <Card className="position-relative text-decoration-none text-body bg-light text-white card_maxSize">
                 <Card.Img variant="top" src={prod.thumbnail.path+'/standard_fantastic.'+ prod.thumbnail.extension} />
                 <Card.ImgOverlay className="d-flex align-items-end p-0 text-start">
